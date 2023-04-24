@@ -12,28 +12,38 @@
                List Of Patient For Manipulation !
             </div>
             <div class="card-body">
+                <form method="get" th:action="@{patients}">
+                    <div class="form-group">
+                        <label for="keyword">Name : </label>
+                        <input type="text" name="keyword" th:value="${keyword}">
+                        <button class="btn btn-success">Chercher</button>
+                    </div>
+                </form>
                 <table class="table">
                     <tr>
                         <th>ID</th>
                         <th>NAME</th>
                         <th>Date De Naissance</th>
                         <th>Malade</th>
+                        <th>Action</th>
                     </tr>
                     <tr th:each="p:${patients}">
                         <td th:text="${p.id}"> </td>
                         <td th:text="${p.name}"> </td>
                         <td th:text="${p.dateNaissance}"> </td>
                         <td th:text="${p.malade}"> </td>
+                        <td><a class="btn btn-danger" th:href="@{deletePatient(id=${p.id}, keyword=${keyword})}">Supprimer</a></td>
                     </tr>
                 </table>
-                <ul class="nav nav-pills">
-                    <li th:each="page,status:${pages}">
-                        <a th:class="${status.index==currentPage? 'btn btn-primary': 'btn'}" th:text="${status.index}" th:href="@{patients(page = ${status.index})}"></a>
+                <ul class="nav nav-pills " >
+                    <li th:each="page,status:${pages}" class="text-center">
+                        <a th:class="${status.index==currentPage? 'btn btn-success': 'btn'}" th:text="${status.index}" th:href="@{patients(page = ${status.index},keyword=${keyword})}"></a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
+
 
 
 </body>
