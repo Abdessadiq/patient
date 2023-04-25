@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1"
+     >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    <link rel="stylesheet" type="text/css"  href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" />-->
+</head>
+<body>
+<section layout:fragment="pageContent">
+    <div class="container">
+        <div class="card">
+            <div class="card-header"> Ajouter un patient</div>
+            <div class="card-body">
+                <div class="container">
+                    <form th:action="@{savePatient}" method="post">
+                        <div class="form-group">
+                            <label for="name" class="control-label"> Le Nom :</label>
+                            <input type="text" name="name" id="name" th:value="${patient.name}" class="form-control">
+                            <span></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dateNaissance" class="control-label"> La date de Naissance :</label>
+                            <input type="date" name="dateNaissance" id="dateNaissance" th:value="${patient.dateNaissance}" class="form-control">
+                            <span></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="numero" class="control-label"> NUMERO :</label>
+                            <input type="number" class="form-control" name="numero" id="numero" th:value="${patient.numero}">
+                            <span></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"> MALADE :</label>
+                            <input type="checkbox" name="malade" th:checked="${patient.malade}" th:value="${patient.malade}">
+                            <span></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-success"> Ajouter </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+</body>
+</html>
