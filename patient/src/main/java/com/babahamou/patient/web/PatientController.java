@@ -53,7 +53,7 @@ public class PatientController {
     }
     @PostMapping(path = "/savePatient")
     public String savePatient(@Valid Patient patient, BindingResult bindingResult){
-        if (bindingResult.hasErrors()) return  "formPatient";
+       // if (bindingResult.hasErrors()) return  "formPatient";
 
         patientRepository.save(patient);
 
@@ -61,7 +61,7 @@ public class PatientController {
     }
 
     @GetMapping(path = "/editPatient")
-    public String editPatient(Model model, Long id){
+    public String editPatient(Model model, @RequestParam(name = "id") Long id){
         Patient p = patientRepository.findById(id).get();
         model.addAttribute("patient", p);
         model.addAttribute("mode", "edit");
