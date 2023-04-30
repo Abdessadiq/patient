@@ -17,12 +17,10 @@
                </div>
                <div class="card-body">
                    <form method="get" th:action="@{patients}">
-                       <div class="form-group row m-2">
-                           <label for="keyword" class="col-sm-1 col-form-label" >Name : </label>
-                           <div class="col-sm-4">
-                              <input type="text" name="keyword" id="keyword" th:value="${keyword}" placeholder="Name for search into Data .." class="form-control">
-                           </div>
-                           <button class="btn btn-success col-sm-1">Chercher</button>
+                       <div class="form-group ">
+                           <label for="keyword" >Name : </label>
+                           <input type="text" name="keyword" id="keyword" th:value="${keyword}" >
+                           <button class="btn btn-success">Chercher</button>
                        </div>
                    </form>
                    <table class="table">
@@ -32,7 +30,8 @@
                            <th>Date De Naissance</th>
                            <th>Malade</th>
                            <th>Nember</th>
-                           <th>Action</th>
+                           <th>Action 1</th>
+                           <th>Action 2</th>
                        </tr>
                        <tr th:each="p:${patients}">
                            <td th:text="${p.id}"> </td>
@@ -40,10 +39,11 @@
                            <td th:text="${p.dateNaissance}"> </td>
                            <td th:text="${p.malade}"> </td>
                            <td th:text="${p.numero}"> </td>
-                           <td><a onclick=" return confirm('Ëtes Vous sûr de vouloir supprimer Ce Patient')" class="btn btn-danger" th:href="@{deletePatient(id=${p.id}, keyword=${keyword})}">Supprimer</a></td>
+                           <td><a onclick=" return confirm('Ëtes Vous sûr de vouloir supprimer Ce Patient')" class="btn btn-danger" th:href="@{deletePatient(id=${p.id},page=${currentPage},size=${size}, keyword=${keyword})}">Supprimer</a></td>
+                           <td><a  class="btn btn-primary" th:href="@{editPatient(id=${p.id})}">Modifier</a></td>
                        </tr>
                    </table>
-                   <ul class="nav nav-pills " >
+                   <ul class="nav nav-pills ">
                        <li th:each="page,status:${pages}" class="text-center">
                            <a th:class="${status.index==currentPage? 'btn btn-success': 'btn'}" th:text="${status.index}" th:href="@{patients(page = ${status.index},keyword=${keyword})}"></a>
                        </li>
