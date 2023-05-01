@@ -8,9 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -22,6 +20,21 @@ public class PatientController {
     @GetMapping(path="/index")
     public String test(){
         return "index";
+    }
+    @GetMapping(path = "patientNumero")
+    public String patientNumero(Model model,
+                                @RequestParam(name = "num") int num,
+                                @RequestParam(name="page", defaultValue = "0") int page,
+                                @RequestParam(name="size", defaultValue = "6") int size
+                                ){
+        Page<Patient> patientPage = patientRepository.findByNumero(num, PageRequest.of(page, size));
+        model.addAttribute("patients", patientPage);
+        model.addAttribute("pages", new int[patientPage.getTotalPages()]);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("size", size);
+        model.addAttribute("num", num);
+        return "patient";
+
     }
     @GetMapping(path = "/patients")
     public  String list(Model model,
@@ -52,20 +65,29 @@ public class PatientController {
         return "formPatient";
     }
     @PostMapping(path = "/savePatient")
-    public String savePatient(@Valid Patient patient, BindingResult bindingResult){
-       // if (bindingResult.hasErrors()) return  "formPatient";
-
+    public String savePatient( Patient patient ){
         patientRepository.save(patient);
-
         return "formPatient";
     }
 
+
     @GetMapping(path = "/editPatient")
-    public String editPatient(Model model, @RequestParam(name = "id") Long id){
+    public String editPatient(Model model, Long id){
+
+        Patient patient = patientRepository.findById(id).get();
+        model.addAttribute("patient", patient);
+        model.addAttribute("mode", "edit");
+        return "formPatient";
+    }
+
+
+  /* @GetMapping(path = "/editPatient")
+    public String editPatient(Model model, Long id){
+
         Patient p = patientRepository.findById(id).get();
         model.addAttribute("patient", p);
         model.addAttribute("mode", "edit");
         return "formPatient";
-    }
+    }*/
 
 }
