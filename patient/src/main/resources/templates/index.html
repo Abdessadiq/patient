@@ -1,12 +1,123 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>My Website</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <style>
+            .hero-section {
+                background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+                background-size: cover;
+                background-position: center;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .hero-content {
+                color: #fff;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 4rem;
+                margin-bottom: 2rem;
+                text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+            }
+
+            .hero-content p {
+                font-size: 1.5rem;
+                margin-bottom: 3rem;
+            }
+
+            .btn-primary {
+                background-color: #007bff;
+                border-color: #007bff;
+                padding: 1.5rem 3rem;
+                font-size: 1.5rem;
+            }
+
+            .btn-primary:hover {
+                background-color: #0069d9;
+                border-color: #0062cc;
+            }
+        </style>
+    </head>
+
+
 </head>
 <body>
-<h1> Test ! </h1>
+<section class="cont" layout:fragment="pageContent">
 
+
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to my website</h1>
+            <p>Discover our services and products</p>
+            <a href="#" class="btn btn-primary">Learn more</a>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-5">Our Services</h2>
+        <section>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://fastly.picsum.photos/id/1000/536/354.jpg?hmac=aZTnNnF14Z0biJir9xZ581k9dnXNeE-gF4MyFLHCPOQ" class="card-img-top"
+                             alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Service 3</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://fastly.picsum.photos/id/1000/536/354.jpg?hmac=aZTnNnF14Z0biJir9xZ581k9dnXNeE-gF4MyFLHCPOQ" class="card-img-top"
+                             alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Service 2</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://fastly.picsum.photos/id/1000/536/354.jpg?hmac=aZTnNnF14Z0biJir9xZ581k9dnXNeE-gF4MyFLHCPOQ" class="card-img-top"
+                             alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Service 3</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom JavaScript for this theme -->
+        <script src="js/scrolling-nav.js"></script>
+
+</section>
 
 </body>
 </html>
