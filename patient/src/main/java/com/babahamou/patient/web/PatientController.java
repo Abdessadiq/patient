@@ -23,11 +23,13 @@ public class PatientController {
     }
     @GetMapping(path = "patientNumero")
     public String patientNumero(Model model,
-                                @RequestParam(name = "num") int num,
+                                @RequestParam(name = "num", defaultValue = "0") int  num,
                                 @RequestParam(name="page", defaultValue = "0") int page,
                                 @RequestParam(name="size", defaultValue = "6") int size
                                 ){
-        Page<Patient> patientPage = patientRepository.findByNumero(num, PageRequest.of(page, size));
+
+
+        Page<Patient> patientPage = patientRepository.findByNumero((int)num, PageRequest.of(page, size));
         model.addAttribute("patients", patientPage);
         model.addAttribute("pages", new int[patientPage.getTotalPages()]);
         model.addAttribute("currentPage", page);

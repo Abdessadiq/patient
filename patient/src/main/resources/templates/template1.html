@@ -30,7 +30,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" th:href="@{formPatient}">Ajouter</a>
-                    <a class="dropdown-item" th:href="@{patients}">Lists de patients</a>
+                    <a class="dropdown-item" th:href="@{patients}">Listes</a>
                     <a class="dropdown-item" href="#">Chercher</a>
                 </div>
             </li>
@@ -42,7 +42,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="#">Login</a>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" th:href="@{/logout}">Logout</a>
                     <a class="dropdown-item" href="#">Profile</a>
                 </div>
             </li>
