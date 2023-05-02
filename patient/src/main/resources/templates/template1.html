@@ -37,13 +37,18 @@
                 </div>
             </li>
         </ul>
-        <ul class="navbar-nav ml-auto mr-5">
+        <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span sec:authentication="name"></span>
+                <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span sec:authorize="isAuthenticated()">
+                        <span sec:authentication="name"></span>
+                    </span>
+                    <span sec:authorize="!isAuthenticated()">
+                        <span> Se Connecter </span>
+                    </span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" sec:authorize="!isAuthenticated()" >Login</a>
+                    <a class="dropdown-item" sec:authorize="!isAuthenticated()" th:href="@{login}" >Login</a>
                     <a class="dropdown-item" sec:authorize="!isAnonymous()" th:href="@{/logout}">Logout</a>
                     <a class="dropdown-item" href="#">Profile</a>
                 </div>
