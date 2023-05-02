@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="template1"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
 >
 <head>
     <meta charset="UTF-8">
@@ -36,15 +37,15 @@
                     </form>
                 </div>
                 <hr class="hr hr-blurry mb-5"/>
-                <table class="table mt-2">
+                <table class="table mt-2 table-hover">
                     <tr>
                         <th>ID</th>
                         <th>Nom</th>
                         <th>Date De Naissance</th>
                         <th>Malade</th>
                         <th>Numero</th>
-                        <th>Action 1</th>
-                        <th>Action 2</th>
+                        <th sec:authorize="hasRole('ROLE_ADMIN')">Action 1</th>
+                        <th sec:authorize="hasRole('ROLE_ADMIN')">Action 2</th>
                     </tr>
                     <tr th:each="p:${patients}">
                         <td th:text="${p.id}"></td>
@@ -52,11 +53,13 @@
                         <td th:text="${p.dateNaissance}"></td>
                         <td th:text="${p.malade}"></td>
                         <td th:text="${p.numero}"></td>
-                        <td><a onclick=" return confirm('Ëtes Vous sûr de vouloir supprimer Ce Patient')"
+                        <td sec:authorize="hasRole('ROLE_ADMIN')"><a onclick=" return confirm('Ëtes Vous sûr de vouloir supprimer Ce Patient')"
                                class="btn btn-danger"
                                th:href="@{deletePatient(id=${p.id},page=${currentPage},size=${size}, keyword=${keyword})}">Supprimer</a>
                         </td>
-                        <td><a class="btn btn-primary" th:href="@{editPatient(id=${p.id})}">Modifier</a></td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a class="btn btn-primary" th:href="@{editPatient(id=${p.id})}">Modifier</a>
+                        </td>
                     </tr>
                 </table>
                 <hr class="hr hr-blurry mb-5 mt-5"/>

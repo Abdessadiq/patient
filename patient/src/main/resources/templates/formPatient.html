@@ -19,8 +19,8 @@
                     <form th:action="@{savePatient}" method="post">
 
 <!--                        <div class="form-group" th:if="${mode=='edit'}">-->
-                        <div class="form-group" >
-                            <label class="control-label"> Le ID :</label>
+                        <div class="form-group"th:if="${mode=='edit'}"  >
+                            <label class="control-label" > Le ID :</label>
                             <input type="text" name="id" th:value="${patient.id}" class="form-control">
                         </div>
 

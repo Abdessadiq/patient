@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
 <head>
     <meta charset="UTF-8">
     <title>Pages Patients</title>
@@ -29,20 +31,20 @@
                     Patients
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" th:href="@{formPatient}">Ajouter</a>
+                    <a class="dropdown-item" th:href="@{formPatient}" sec:authorize="hasRole('ROLE_ADMIN')">Ajouter</a>
                     <a class="dropdown-item" th:href="@{patients}">Listes</a>
                     <a class="dropdown-item" href="#">Chercher</a>
                 </div>
             </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto mr-5">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    [username]
+                    <span sec:authentication="name"></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Login</a>
-                    <a class="dropdown-item" th:href="@{/logout}">Logout</a>
+                    <a class="dropdown-item" sec:authorize="!isAuthenticated()" >Login</a>
+                    <a class="dropdown-item" sec:authorize="!isAnonymous()" th:href="@{/logout}">Logout</a>
                     <a class="dropdown-item" href="#">Profile</a>
                 </div>
             </li>
