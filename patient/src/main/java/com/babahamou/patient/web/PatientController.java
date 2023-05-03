@@ -25,7 +25,7 @@ public class PatientController {
     public String patientNumero(Model model,
                                 @RequestParam(name = "num", defaultValue = "0") int  num,
                                 @RequestParam(name="page", defaultValue = "0") int page,
-                                @RequestParam(name="size", defaultValue = "6") int size
+                                @RequestParam(name="size", defaultValue = "8") int size
                                 ){
 
 
