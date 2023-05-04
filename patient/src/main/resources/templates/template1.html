@@ -27,7 +27,7 @@
                 <a class="nav-link" href="#">Médecins</a>
 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Patients
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -50,7 +50,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" sec:authorize="!isAuthenticated()" th:href="@{login}" >Login</a>
                     <a class="dropdown-item" sec:authorize="!isAnonymous()" th:href="@{/logout}">Logout</a>
-                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" sec:authorize="!isAuthenticated()" href="#">Profile</a>
                 </div>
             </li>
         </ul>
