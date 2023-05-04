@@ -37,7 +37,7 @@
                 </div>
             </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto mr-4">
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span sec:authorize="isAuthenticated()">
@@ -50,7 +50,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" sec:authorize="!isAuthenticated()" th:href="@{login}" >Login</a>
                     <a class="dropdown-item" sec:authorize="!isAnonymous()" th:href="@{/logout}">Logout</a>
-                    <a class="dropdown-item" sec:authorize="!isAuthenticated()" href="#">Profile</a>
+                    <a class="dropdown-item" sec:authorize="!isAnonymous()" th:href="@{/}">Profile</a>
                 </div>
             </li>
         </ul>
