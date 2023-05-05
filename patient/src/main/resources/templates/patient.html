@@ -6,7 +6,14 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+    />
+    <title>Liste de Patients</title>
     <!--    <link rel="stylesheet" type="text/css"  href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" />-->
 </head>
 <body>
@@ -44,8 +51,8 @@
                         <th>Date De Naissance</th>
                         <th>Malade</th>
                         <th>Numero</th>
-                        <th sec:authorize="hasRole('ROLE_ADMIN')">Action 1</th>
-                        <th sec:authorize="hasRole('ROLE_ADMIN')">Action 2</th>
+                        <th sec:authorize="hasRole('ROLE_ADMIN')" class="mr-5">Action</th>
+                        <!--                        <th sec:authorize="hasRole('ROLE_ADMIN')">Action 2</th>-->
                     </tr>
                     <tr th:each="p:${patients}">
                         <td th:text="${p.id}"></td>
@@ -53,13 +60,18 @@
                         <td th:text="${p.dateNaissance}"></td>
                         <td th:text="${p.malade}"></td>
                         <td th:text="${p.numero}"></td>
-                        <td sec:authorize="hasRole('ROLE_ADMIN')"><a onclick=" return confirm('Ëtes Vous sûr de vouloir supprimer Ce Patient')"
-                               class="btn btn-danger"
-                               th:href="@{deletePatient(id=${p.id},page=${currentPage},size=${size}, keyword=${keyword})}">Supprimer</a>
-                        </td>
                         <td sec:authorize="hasRole('ROLE_ADMIN')">
-                            <a class="btn btn-primary" th:href="@{editPatient(id=${p.id})}">Modifier</a>
+                            <a onclick=" return confirm('Ëtes Vous sûr de vouloir supprimer Ce Patient')"
+                               class="mr-3 btn btn-danger"
+                               th:href="@{deletePatient(id=${p.id},page=${currentPage},size=${size}, keyword=${keyword})}">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                            <a class="btn btn-primary" th:href="@{editPatient(id=${p.id})}"> <i
+                                    class="fas fa-user-pen"></i>
+                            </a>
+
                         </td>
+
                     </tr>
                 </table>
                 <hr class="hr hr-blurry mb-5 mt-5"/>
