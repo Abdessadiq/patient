@@ -50,9 +50,8 @@
                         <th>Nom</th>
                         <th>Date De Naissance</th>
                         <th>Malade</th>
-                        <th>Numero</th>
-                        <th sec:authorize="hasRole('ROLE_ADMIN')" class="mr-5">Action</th>
-                        <!--                        <th sec:authorize="hasRole('ROLE_ADMIN')">Action 2</th>-->
+                        <th >Numero</th>
+                        <th sec:authorize="hasRole('ROLE_ADMIN')" style="padding-left: 30px;">Action</th>
                     </tr>
                     <tr th:each="p:${patients}">
                         <td th:text="${p.id}"></td>
@@ -69,9 +68,7 @@
                             <a class="btn btn-primary" th:href="@{editPatient(id=${p.id})}"> <i
                                     class="fas fa-user-pen"></i>
                             </a>
-
                         </td>
-
                     </tr>
                 </table>
                 <hr class="hr hr-blurry mb-5 mt-5"/>
