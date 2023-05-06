@@ -21,7 +21,6 @@ public class PatientController {
      * La méthode Qui fait appel à la vue de la page accueil
      * @return
      */
-
     @GetMapping(path="/index")
     public String test(){
         return "index";
@@ -35,7 +34,6 @@ public class PatientController {
      * @param size le nombre d'enregistrement à afficher
      * @return
      */
-
     @GetMapping(path = "patientNumero")
     public String patientNumero(Model model,
                                 @RequestParam(name = "num", defaultValue = "0") int  num,

@@ -12,22 +12,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
+/**
+ * La classe pour la configuration de spring security
+ */
 @Configuration
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-
-
         PasswordEncoder passwordEncoder = passwordEncoder();
-
-        System.out.println("*************************");
-        System.out.println(passwordEncoder.encode("12345678"));
-        System.out.println(passwordEncoder.encode("123456789"));
-        System.out.println("*************************");
         auth.jdbcAuthentication()
                 .dataSource(dataSource).usersByUsernameQuery("select username as principal, password as credentials, active from users where username=?")
                 .authoritiesByUsernameQuery("select username as principal, role as role from users_roles where username=?")
@@ -45,7 +39,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin().loginPage("/login");
         //http.formLogin();
-        http.authorizeRequests().antMatchers("/save**/**","/delete**/**", "/form**/**").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers("/save**/**","/delete**/**", "/form**/**", "/edit**/**").hasRole("ADMIN");
         http.authorizeRequests().antMatchers("/patients**/**").hasRole("USER");
 
         http.authorizeRequests().antMatchers("/login", "/user/**", "ressources/**").permitAll();
