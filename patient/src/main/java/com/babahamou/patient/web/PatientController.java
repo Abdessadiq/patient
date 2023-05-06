@@ -25,7 +25,7 @@ public class PatientController {
     public String patientNumero(Model model,
                                 @RequestParam(name = "num", defaultValue = "0") int  num,
                                 @RequestParam(name="page", defaultValue = "0") int page,
-                                @RequestParam(name="size", defaultValue = "8") int size
+                                @RequestParam(name="size", defaultValue = "6") int size
                                 ){
 
 
@@ -41,7 +41,7 @@ public class PatientController {
     @GetMapping(path = "/patients")
     public  String list(Model model,
                         @RequestParam(name="page", defaultValue = "0") int page,
-                        @RequestParam(name="size", defaultValue = "6") int size,
+                        @RequestParam(name="size", defaultValue = "8") int size,
                         @RequestParam(name="keyword", defaultValue = "") String mc){
         Page<Patient> pagepatients = patientRepository.findPatientByNameContains(mc,PageRequest.of(page,size));
         model.addAttribute("patients", pagepatients);

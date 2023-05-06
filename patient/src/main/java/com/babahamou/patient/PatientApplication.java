@@ -22,7 +22,7 @@ public class PatientApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		patientRepository.save(new Patient(null, "BENRAJJI", new Date(),(int) (Math.random()*100) , true));
+		/* patientRepository.save(new Patient(null, "BENRAJJI", new Date(),(int) (Math.random()*100) , true));
 		patientRepository.save(new Patient(null, "OBAHHA", new Date(),(int) (Math.random()*100) , true));
 		patientRepository.save(new Patient(null, "JARBAOUI", new Date(),(int) (Math.random()*100) , true));
 		patientRepository.save(new Patient(null, "HELFAOUI", new Date(),(int) (Math.random()*100) , true));
@@ -30,6 +30,8 @@ public class PatientApplication implements CommandLineRunner {
 		patientRepository.save(new Patient(null, "TABARANI", new Date(),(int) (Math.random()*100) , true));
 		patientRepository.save(new Patient(null, "EL-OUAZZANI", new Date(),(int) (Math.random()*100) , true));
 		patientRepository.save(new Patient(null, "BELQADIR", new Date(),(int) (Math.random()*100) , true));
+
+		 */
 
 		patientRepository.findAll().forEach(p  ->{
 			//System.out.println(p.getName().toString());

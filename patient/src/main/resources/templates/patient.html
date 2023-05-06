@@ -18,7 +18,7 @@
 </head>
 <body>
 <div layout:fragment="pageContent">
-    <div class="container mt-5">
+    <div class="container mt-3">
         <div class="card">
             <div class="card-header">
                 liste de patients
@@ -27,10 +27,10 @@
                 <div class="container row mb-3">
                     <form method="get" th:action="@{patients}" class="col mr-2">
                         <div class="form-group row">
-                            <label for="keyword" class="control-label col mt-2">Name : </label>
+                                <label for="keyword" class="control-label col mt-2">Nom : </label>
                             <input type="text" name="keyword" id="keyword" th:value="${keyword}"
                                    class="form-control col-7 mr-2 " placeholder="chercher par Nom de patient">
-                            <button class="btn btn-success col">Chercher</button>
+                            <button class="btn btn-primary col">Chercher</button>
                         </div>
                     </form>
 
@@ -39,7 +39,7 @@
                             <label for="numero" class="control-label col mt-2 ">Numero : </label>
                             <input type="number" name="num" id="numero" th:value="${num}"
                                    class="form-control col-7 mr-2" placeholder="chercher par numero du patient">
-                            <button class="btn btn-success col">Chercher</button>
+                            <button class="btn btn-primary col">Chercher</button>
                         </div>
                     </form>
                 </div>
@@ -66,7 +66,7 @@
                                 <i class="fas fa-trash"></i>
                             </a>
                             <a class="btn btn-primary" th:href="@{editPatient(id=${p.id})}"> <i
-                                    class="fas fa-user-pen"></i>
+                                    class="fas fa-pen-clip"></i>
                             </a>
                         </td>
                     </tr>
